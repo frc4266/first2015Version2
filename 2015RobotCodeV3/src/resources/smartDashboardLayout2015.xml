@@ -1,0 +1,42 @@
+<xml version="1.0">
+<dashboard>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
+		<location x="14" y="14"/>
+		<property name="Text" value="Robot Connection"/>
+	</static-widget>
+	<widget field="Loading Status" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.BooleanBox">
+		<location x="373" y="1"/>
+		<width>192</width>
+		<height>67</height>
+	</widget>
+	<widget field="DrivePower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="184" y="9"/>
+	</widget>
+	<widget field="CanLifter" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="17" y="285"/>
+	</widget>
+	<widget field="ToteLifter" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="14" y="258"/>
+	</widget>
+	<widget field="ScissorLifter" type="PIDSubsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="4" y="232"/>
+	</widget>
+	<widget field="Conveyor" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="15" y="207"/>
+	</widget>
+	<widget field="DriveTrain" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="14" y="180"/>
+	</widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
+		<location x="110" y="4"/>
+		<width>67</width>
+	</static-widget>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
+		<location x="5" y="41"/>
+		<height>126</height>
+	</static-widget>
+</dashboard>
+<live-window>
+</live-window>
+	<hidden field="Auto Mode"/>
+</xml>
