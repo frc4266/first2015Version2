@@ -12,6 +12,7 @@ public class ToteLifterToTop extends Command {
     public ToteLifterToTop() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	requires(Robot.toteLifter);
     }
 
     // Called just before this Command runs the first time
@@ -20,15 +21,17 @@ public class ToteLifterToTop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.toteLifter.raise();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.toteLifter.isAtUpperLimit();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.toteLifter.stop();
     	Robot.isLoadingTote = false;
     }
 

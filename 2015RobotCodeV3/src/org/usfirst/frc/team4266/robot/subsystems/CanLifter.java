@@ -1,8 +1,15 @@
 package org.usfirst.frc.team4266.robot.subsystems;
 
+import org.usfirst.frc.team4266.robot.Robot;
+import org.usfirst.frc.team4266.robot.RobotMap;
+import org.usfirst.frc.team4266.robot.commands.CanLifterToTop;
+import org.usfirst.frc.team4266.robot.commands.ToteLifterToTop;
+
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -11,6 +18,7 @@ public class CanLifter extends Subsystem {
 	
     
 	// Subsystem devices
+	
 	private DigitalInput upperLimitSwitch;
 	private DigitalInput lowerLimitSwitch;
 	
@@ -19,28 +27,70 @@ public class CanLifter extends Subsystem {
 		
 	public CanLifter(){
 		// Sensors for measuring the position of the pivot.
-		upperLimitSwitch = new DigitalInput(13);
-		lowerLimitSwitch = new DigitalInput(12);
+		if(Robot.isSensorsReady){
+			upperLimitSwitch = new DigitalInput(RobotMap.canLifterUpperSwitch);
+			lowerLimitSwitch = new DigitalInput(RobotMap.canLifterLowerSwitch);
 		
 		// Put everything to the LiveWindow for testing.
-		LiveWindow.addSensor("Pivot", "Upper Limit Switch", upperLimitSwitch);
-		LiveWindow.addSensor("Pivot", "Lower Limit Switch", lowerLimitSwitch);
+			LiveWindow.addSensor("CanLifter", "Upper Limit Switch", upperLimitSwitch);
+			LiveWindow.addSensor("CanLifter", "Lower Limit Switch", lowerLimitSwitch);
+		}
 	}
+	
+    public void lifterControl(Joystick joy){
+        double power = joy.getY();
+
+        /*
+        if(power>0){
+           lifterMotor.set(power*.9);
+        }else if(power<0){
+           lifterMotor.set(power*.4);   
+        }else{
+            lifterMotor.set(power*.6);  
+        }*/
+        
+    }
+	
+	
 
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	//setDefaultCommand(new CanLifterToTop());
     }
     
+    public void raise(){
+    	
+	 }
+	 public void lower(){
+	   	
+	 }
+	 public void stop(){
+		
+	 }
+    
     public boolean isAtUpperLimit() {
-		return upperLimitSwitch.get(); // TODO: inverted from real robot (prefix with !)
+    	if(Robot.isSensorsReady){
+    		return upperLimitSwitch.get(); // TODO: inverted from real robot (prefix with !)
+    	}
+    	return true;
 	}
 
 	/**
 	 * @return If the pivot is at its lower limit.
 	 */
 	public boolean isAtLowerLimit() {
-		return lowerLimitSwitch.get(); // TODO: inverted from real robot (prefix with !)
+		if(Robot.isSensorsReady){
+			return lowerLimitSwitch.get(); // TODO: inverted from real robot (prefix with !)
+		}
+		return true;
+	}
+	
+	public void updateStatus(){
+		if(Robot.isSensorsReady){
+			SmartDashboard.putBoolean("Can Upper Switch", isAtUpperLimit());
+			SmartDashboard.putBoolean("Can Lower Switch", isAtLowerLimit());
+		}
 	}
 }
 

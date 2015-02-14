@@ -18,7 +18,7 @@ public class ConveyorUnloadTotes extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.conveyor.motorOnToUnload();
+    	Robot.conveyor.onToUnloadTote();
     }
 
     // Called repeatedly when this Command is scheduled to run

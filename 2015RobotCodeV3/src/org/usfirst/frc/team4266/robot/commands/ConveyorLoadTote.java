@@ -18,7 +18,7 @@ public class ConveyorLoadTote extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.isLoadingTote = true;
-    	Robot.conveyor.turnOn();
+    	Robot.conveyor.onToLoadTote();;
     }
 
     // Called repeatedly when this Command is scheduled to run

@@ -28,7 +28,7 @@ public class UnloadTotes extends CommandGroup {
         // arm.
     	
     	
-    	addSequential(new ScissorLifterSetPoint(scoringSetpoint));
+    	
     	addSequential(new ConveyorUnloadTotes());
     }
 }

@@ -26,10 +26,12 @@ public class LoadNextTote extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	if(!Robot.isLoadingTote){
-    		addSequential(new ConveyorLoadTote());
-    		addSequential(new ToteLifterToBottom());
-    		addSequential(new ToteLifterToTop());
+    	if(Robot.isSensorsReady){
+	    	if(!Robot.isLoadingTote){
+	    		addSequential(new ConveyorLoadTote());
+	    		addSequential(new ToteLifterToBottom());
+	    		addSequential(new ToteLifterToTop());
+	    	}
     	}
     	
     	

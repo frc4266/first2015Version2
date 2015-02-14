@@ -2,6 +2,12 @@ package org.usfirst.frc.team4266.robot;
 
 import org.usfirst.frc.team4266.robot.commands.LoadNextTote;
 import org.usfirst.frc.team4266.robot.commands.UnloadTotes;
+import org.usfirst.frc.team4266.robot.commands.UserScissorLiftOff;
+import org.usfirst.frc.team4266.robot.commands.UserScissorLiftOn;
+import org.usfirst.frc.team4266.robot.commands.UserToteLifterOff;
+import org.usfirst.frc.team4266.robot.commands.UserToteLifterOn;
+import org.usfirst.frc.team4266.robot.commands.UserTurnOffConveyor;
+import org.usfirst.frc.team4266.robot.commands.UserTurnOnConveyor;
 import org.usfirst.frc.team4266.robot.subsystems.ScissorLifter;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -40,22 +46,43 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
     public static final Joystick driveStick = new Joystick(RobotMap.driveStick);
-    public static final Joystick liftStick = new Joystick(RobotMap.joystick2);
+    //public static final Joystick liftStick = new Joystick(RobotMap.joystick2);
     
     
-    public static Button loadToteButton = new JoystickButton(driveStick,2);
+   // public static Button loadToteButton = new JoystickButton(driveStick,2);
     
-    public static Button unLoadToStep = new JoystickButton(driveStick,3);
+    //public static Button unLoadToStep = new JoystickButton(driveStick,3);
     
-    public static Button unLoadToScoring = new JoystickButton(driveStick,1);
+   // public static Button unLoadToScoring = new JoystickButton(driveStick,1);
     
-    public static Button stopLoading = new JoystickButton(driveStick,11);
+    //public static Button stopLoading = new JoystickButton(driveStick,11);
     
     
     public OI (){
-    	loadToteButton.whenPressed(new LoadNextTote());
-    	unLoadToStep.whenPressed(new UnloadTotes(ScissorLifter.STEP_SETPOINT));
-    	unLoadToScoring.whenPressed(new UnloadTotes(ScissorLifter.SCORING_SETPOINT));
+    	
+    	new JoystickButton(driveStick, 2).whenPressed(new LoadNextTote());
+    	
+    	new JoystickButton(driveStick, 6).whenPressed(new UserTurnOnConveyor(1));//conveyor to load
+    	new JoystickButton(driveStick, 6).whenReleased(new UserTurnOffConveyor());
+    	
+    	new JoystickButton(driveStick, 7).whenPressed(new UserTurnOnConveyor(-1));//conveyor to unload
+    	new JoystickButton(driveStick, 7).whenReleased(new UserTurnOffConveyor());
+    	
+    	new JoystickButton(driveStick, 8).whenPressed(new UserScissorLiftOn(-0.7));//scissor lift down
+    	new JoystickButton(driveStick, 8).whenReleased(new UserScissorLiftOff());
+    	
+    	new JoystickButton(driveStick, 9).whenPressed(new UserScissorLiftOn(0.7));//scissor lift up
+    	new JoystickButton(driveStick, 9).whenReleased(new UserScissorLiftOff());
+    	
+    	new JoystickButton(driveStick, 11).whenPressed(new UserToteLifterOn(0.3));//tote lifter up
+    	new JoystickButton(driveStick, 11).whenReleased(new UserToteLifterOff());
+    	
+    	new JoystickButton(driveStick, 10).whenPressed(new UserToteLifterOn(-0.3));//tote lifter down
+    	new JoystickButton(driveStick, 10).whenReleased(new UserToteLifterOff());
+    	
+    	
+    	//new JoystickButton(driveStick, 3).whenPressed(new UnloadTotes(ScissorLifter.STEP_SETPOINT));
+    	//new JoystickButton(driveStick, 1).whenPressed(new UnloadTotes(ScissorLifter.SCORING_SETPOINT));
     }
     
     /*

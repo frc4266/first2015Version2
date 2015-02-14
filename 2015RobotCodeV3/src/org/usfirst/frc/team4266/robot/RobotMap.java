@@ -16,12 +16,36 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-    public static final int driveStick = 1;
-    public static final int joystick2 = 2;
+    public static final int driveStick = 0;
+    public static final int joystick2 = 1;
     
     // jaguars
-    public static final int rightMotor   = 1;//blue
-    public static final int leftMotor  = 2;//red
+    public static final int rightMotor   = 0;//green
+    public static final int leftMotor  = 1;//blue
+    public static final int toteLifter = 3;
+    public static final int canLifter = 4;
+    public static final int scissorLifter   = 5;
+    public static final int conveyor   = 2;
+    public static final int canClaw = 6;
+    
+    
+    //talons
+    
+    //pot
+    public static final int pot = 1;
+    
+    //Limit Switches
+    public static final int conveyorSwitch  = 1;
+    
+    public static final int scissorLifterScoringSwitch  = 2;
+    public static final int scissorLifterStepSwitch  = 3;
+    public static final int scissorLifterLoadingSwitch  = 4;
+    
+    public static final int toteLifterLowerSwitch  = 5;
+    public static final int toteLifterUpperSwitch  = 6;
+    
+    public static final int canLifterLowerSwitch  = 7;
+    public static final int canLifterUpperSwitch  = 8;
     
     //encoders
     public static final int rightEncoder1 = 11;
