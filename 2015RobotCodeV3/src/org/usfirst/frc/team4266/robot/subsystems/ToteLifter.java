@@ -2,9 +2,11 @@ package org.usfirst.frc.team4266.robot.subsystems;
 
 import org.usfirst.frc.team4266.robot.Robot;
 import org.usfirst.frc.team4266.robot.RobotMap;
+import org.usfirst.frc.team4266.robot.commands.ToteLifterDoNothing;
 import org.usfirst.frc.team4266.robot.commands.ToteLifterToTop;
 
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -19,8 +21,13 @@ public class ToteLifter extends Subsystem {
 	
 	private DigitalInput upperLimitSwitch;
 	private DigitalInput lowerLimitSwitch;
+	Talon toteTalon;
 	
 	public ToteLifter(){
+		
+		toteTalon = new Talon(RobotMap.toteLifter);
+		toteTalon.setSafetyEnabled(false);
+		LiveWindow.addActuator("ScissorLifter", "Motor", (Talon) toteTalon);
 		if(Robot.isSensorsReady){
 			// Sensors 
 			upperLimitSwitch = new DigitalInput(RobotMap.toteLifterUpperSwitch);
@@ -36,20 +43,21 @@ public class ToteLifter extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	//setDefaultCommand(new ToteLifterToTop());
+    	setDefaultCommand(new ToteLifterDoNothing());
     }
     
     public void raise(){
-    	
+    	toteTalon.set(1);
     }
     public void lower(){
-    	
+    	toteTalon.set(-1);
     }
 	public void stop(){
-	
+		toteTalon.set(0);
 	}
 	
 	public void drive(double power){
-		//motor.set(power);
+		toteTalon.set(power);
 	}
     
     

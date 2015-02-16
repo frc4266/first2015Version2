@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class UserToteLifterOff extends Command {
+public class ToteLifterDoNothing extends Command {
 
-    public UserToteLifterOff() {
+    public ToteLifterDoNothing() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.toteLifter);
@@ -26,7 +26,7 @@ public class UserToteLifterOff extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

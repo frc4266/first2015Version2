@@ -7,6 +7,7 @@ import org.usfirst.frc.team4266.robot.commands.ToteLifterToTop;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -21,18 +22,23 @@ public class CanLifter extends Subsystem {
 	
 	private DigitalInput upperLimitSwitch;
 	private DigitalInput lowerLimitSwitch;
-	
+	Talon canTalon;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 		
 	public CanLifter(){
+		
+		canTalon = new Talon(RobotMap.scissorLifter);
+		canTalon.setSafetyEnabled(false);
+		
 		// Sensors for measuring the position of the pivot.
 		if(Robot.isSensorsReady){
 			upperLimitSwitch = new DigitalInput(RobotMap.canLifterUpperSwitch);
 			lowerLimitSwitch = new DigitalInput(RobotMap.canLifterLowerSwitch);
 		
 		// Put everything to the LiveWindow for testing.
-			LiveWindow.addSensor("CanLifter", "Upper Limit Switch", upperLimitSwitch);
+			LiveWindow.addActuator("ScissorLifter", "Motor", (Talon) canTalon);
+			LiveWindow.addSensor("CanLifter", "Upper Limit Switch", upperLimitSwitch);			
 			LiveWindow.addSensor("CanLifter", "Lower Limit Switch", lowerLimitSwitch);
 		}
 	}
@@ -60,13 +66,13 @@ public class CanLifter extends Subsystem {
     }
     
     public void raise(){
-    	
+    	canTalon.set(1);
 	 }
 	 public void lower(){
-	   	
+		 canTalon.set(-1);
 	 }
 	 public void stop(){
-		
+		 canTalon.set(0);
 	 }
     
     public boolean isAtUpperLimit() {

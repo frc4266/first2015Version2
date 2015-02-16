@@ -7,17 +7,17 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class UserToteLifterOff extends Command {
+public class CanLifterDoNothing extends Command {
 
-    public UserToteLifterOff() {
+    public CanLifterDoNothing() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.toteLifter);
+    	requires(Robot.canLifter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.toteLifter.stop();
+    	Robot.canLifter.stop();
     }
 
     // Called repeatedly when this Command is scheduled to run
@@ -26,7 +26,7 @@ public class UserToteLifterOff extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return false;
     }
 
     // Called once after isFinished returns true

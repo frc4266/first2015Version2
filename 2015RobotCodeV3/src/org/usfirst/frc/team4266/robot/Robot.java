@@ -13,6 +13,7 @@ import org.usfirst.frc.team4266.robot.subsystems.DriveTrain;
 import org.usfirst.frc.team4266.robot.subsystems.ScissorLifter;
 import org.usfirst.frc.team4266.robot.subsystems.ToteLifter;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Preferences;
 import edu.wpi.first.wpilibj.command.Command;
@@ -54,10 +55,12 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * 		position for step scoring, 
  * 		position  for scoring platform(Lowest)
  * 
- * 5.) canLifter - 2 motors
- * 		one motor up and down
-			 
- * 		the other motor opens/closes on can
+ * 5.) canLifter - 1 motors
+ * 
+ * one motor up and down
+ * 
+ * 6.) canClaw - 1 motor
+ * 		motor opens/closes on can
  */
 
 /*
@@ -91,6 +94,7 @@ public class Robot extends IterativeRobot {
 
     Command autonomousCommand, prepareToLoadCommand;
     public SendableChooser autoChooser;
+    //DriverStation ds;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -100,7 +104,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		
     	prefs = Preferences.getInstance();
-		
+    	//ds = DriverStation.getInstance();
+    	
 		//Create new subsystems
 		driveTrain = new DriveTrain();
 		conveyor = new Conveyor();
@@ -129,6 +134,7 @@ public class Robot extends IterativeRobot {
 	}
 
     public void autonomousInit() {
+    	
     	double timeToDrive = prefs.getDouble("DriveTime", 2);
     	
 		autoChooser = new SendableChooser();
