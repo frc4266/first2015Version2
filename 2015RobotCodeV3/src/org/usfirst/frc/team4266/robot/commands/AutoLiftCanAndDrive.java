@@ -1,15 +1,13 @@
 package org.usfirst.frc.team4266.robot.commands;
 
-import org.usfirst.frc.team4266.robot.Robot;
-
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
  *
  */
-public class LoadNextTote extends CommandGroup {
+public class AutoLiftCanAndDrive extends CommandGroup {
     
-    public  LoadNextTote() {
+    public  AutoLiftCanAndDrive(double driveDistance) {
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
@@ -26,13 +24,9 @@ public class LoadNextTote extends CommandGroup {
         // e.g. if Command1 requires chassis, and Command2 requires arm,
         // a CommandGroup containing them would require both the chassis and the
         // arm.
-    	if(Robot.isSensorsReady){
-	    	if(!Robot.isLoadingTote){
-	    		addSequential(new ConveyorLoadTote());
-	    	
-	    	}
-    	}
-    	
+    	addSequential(new AutoCloseClaw(0.3,0.5));//power = 0.3, time  = 1 sec
+    	addSequential(new AutoLiftClaw(0.5,4));//power, time
+    	addSequential(new AutoDriveToTime(-0.5,driveDistance));//power,time
     	
     }
 }

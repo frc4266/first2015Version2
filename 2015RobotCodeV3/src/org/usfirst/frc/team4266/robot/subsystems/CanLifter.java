@@ -2,12 +2,16 @@ package org.usfirst.frc.team4266.robot.subsystems;
 
 import org.usfirst.frc.team4266.robot.Robot;
 import org.usfirst.frc.team4266.robot.RobotMap;
+import org.usfirst.frc.team4266.robot.commands.CanLifterDoNothing;
 import org.usfirst.frc.team4266.robot.commands.CanLifterToTop;
-import org.usfirst.frc.team4266.robot.commands.ToteLifterToTop;
 
+
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Talon;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -15,20 +19,27 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class CanLifter extends Subsystem {
+public class CanLifter extends Subsystem {//PIDSubsystem {
 	
     
 	// Subsystem devices
 	
 	private DigitalInput upperLimitSwitch;
 	private DigitalInput lowerLimitSwitch;
+	//Encoder canEncoder = new Encoder(RobotMap.rightEncoder1,RobotMap.rightEncoder2,true,CounterBase.EncodingType.k4X);
 	Talon canTalon;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 		
 	public CanLifter(){
+		//super("CanLifter", 0, 0, 0);
+		//setAbsoluteTolerance(0.005);
+		//getPIDController().setContinuous(false);
 		
-		canTalon = new Talon(RobotMap.scissorLifter);
+		//enable/disable PID
+		//this.disable();;
+		
+		canTalon = new Talon(RobotMap.canLifter);
 		canTalon.setSafetyEnabled(false);
 		
 		// Sensors for measuring the position of the pivot.
@@ -37,10 +48,13 @@ public class CanLifter extends Subsystem {
 			lowerLimitSwitch = new DigitalInput(RobotMap.canLifterLowerSwitch);
 		
 		// Put everything to the LiveWindow for testing.
-			LiveWindow.addActuator("ScissorLifter", "Motor", (Talon) canTalon);
+			LiveWindow.addActuator("CanLifter", "Motor", (Talon) canTalon);
 			LiveWindow.addSensor("CanLifter", "Upper Limit Switch", upperLimitSwitch);			
 			LiveWindow.addSensor("CanLifter", "Lower Limit Switch", lowerLimitSwitch);
+			//LiveWindow.addSensor("CanLifter", "Encoder", canEncoder);
+			//LiveWindow.addActuator("CanLifter", "PIDSubsystem Controller", getPIDController());
 		}
+		//canEncoder.setDistancePerPulse(6*Math.PI/360);
 	}
 	
     public void lifterControl(Joystick joy){
@@ -62,14 +76,14 @@ public class CanLifter extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
-    	//setDefaultCommand(new CanLifterToTop());
+    	setDefaultCommand(new CanLifterDoNothing());
     }
     
-    public void raise(){
-    	canTalon.set(1);
+    public void raise(double power){
+    	canTalon.set(power);
 	 }
-	 public void lower(){
-		 canTalon.set(-1);
+	 public void lower(double power){
+		 canTalon.set(power);
 	 }
 	 public void stop(){
 		 canTalon.set(0);
@@ -98,5 +112,17 @@ public class CanLifter extends Subsystem {
 			SmartDashboard.putBoolean("Can Lower Switch", isAtLowerLimit());
 		}
 	}
+/*
+	@Override
+	protected double returnPIDInput() {
+		// TODO Auto-generated method stub
+		return canEncoder.get();
+	}
+
+	@Override
+	protected void usePIDOutput(double output) {
+		// TODO Auto-generated method stub
+		canTalon.pidWrite(output);
+	}*/
 }
 

@@ -1,163 +1,56 @@
 <xml version="1.0">
 <dashboard>
-	<widget field="Scissor Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="289" y="89"/>
-	</widget>
-	<widget field="ScissorLifter" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="0" y="136"/>
-	</widget>
-	<widget field="Pivot" type="PIDSubsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="255" y="61"/>
-		<width>260</width>
-	</widget>
-	<widget field="Pot" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="511" y="109"/>
-	</widget>
-	<widget field="CanClaw" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="18" y="66"/>
-	</widget>
-	<widget field="Auto Mode Chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="325" y="169"/>
-	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.ConnectionIndicator">
-		<location x="105" y="103"/>
-		<width>151</width>
+	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
+		<location x="451" y="238"/>
 	</static-widget>
-	<widget field="Turn Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="583"/>
-	</widget>
-	<widget field="Forward Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="562"/>
-	</widget>
-	<widget field="Scissor Lifter Step" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="541"/>
-	</widget>
-	<widget field="Can Upper Switch" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="520"/>
-	</widget>
-	<widget field="Scissor Lifter Loading" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="499"/>
+	<widget field="Auto Mode Chooser" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
+		<location x="301" y="268"/>
 	</widget>
 	<widget field="Is Robot Ready To Load" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="478"/>
-	</widget>
-	<widget field="Scissor Lifter Scoring" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="457"/>
-	</widget>
-	<widget field="Tote Lower Switch" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="436"/>
-	</widget>
-	<widget field="Auto Mode" type="String Chooser" class="edu.wpi.first.smartdashboard.gui.elements.Chooser">
-		<location x="0" y="369"/>
-	</widget>
-	<widget field="Tote Upper Switch" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="348"/>
+		<location x="35" y="442"/>
 	</widget>
 	<widget field="Conveyor Sensor" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="327"/>
+		<location x="54" y="515"/>
 	</widget>
-	<widget field="Can Lower Switch" type="Boolean" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="0" y="306"/>
+	<widget field="Forward Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="16" y="297"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.Label">
-		<location x="12" y="109"/>
-		<height>26</height>
-		<property name="Text" value="Robot Connection"/>
-	</static-widget>
-	<widget field="DrivePower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="286" y="13"/>
+	<widget field="Turn Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="8" y="249"/>
 	</widget>
-	<widget field="CanLifter" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="17" y="285"/>
-	</widget>
-	<widget field="ToteLifter" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="14" y="258"/>
-	</widget>
-	<widget field="Conveyor" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="15" y="207"/>
+	<widget field="Pivot" type="PIDSubsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="284" y="26"/>
 	</widget>
 	<widget field="DriveTrain" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
-		<location x="14" y="180"/>
+		<location x="28" y="211"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
-		<location x="293" y="313"/>
-		<height>126</height>
-	</static-widget>
-	<widget field="Drive time" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
-		<location x="6" y="16"/>
-		<width>183</width>
-		<height>28</height>
+	<widget field="Tote Encoder" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="21" y="186"/>
 	</widget>
-	<static-widget class="edu.wpi.first.smartdashboard.gui.elements.RobotPreferences">
-		<location x="293" y="313"/>
-		<height>126</height>
-	</static-widget>
+	<widget field="ToteLifter" type="PIDSubsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="252" y="179"/>
+	</widget>
+	<widget field="Conveyor" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="4" y="130"/>
+	</widget>
+	<widget field="Pot" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="447" y="24"/>
+	</widget>
+	<widget field="Scissor Power" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="462" y="101"/>
+		<height>39</height>
+	</widget>
+	<widget field="CanLifter" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="32" y="66"/>
+		<height>33</height>
+	</widget>
+	<widget field="CanClaw" type="Subsystem" class="edu.wpi.first.smartdashboard.gui.elements.Subsystem">
+		<location x="34" y="36"/>
+	</widget>
+	<widget field="DrivePower" type="Number" class="edu.wpi.first.smartdashboard.gui.elements.TextBox">
+		<location x="47" y="378"/>
+	</widget>
 </dashboard>
 <live-window>
-	<widget field="DriveTrain" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<widget field="Right" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="16"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<widget field="Left" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="62"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<location x="390" y="265"/>
-		<width>305</width>
-		<height>115</height>
-	</widget>
-	<widget field="Ungrouped" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<widget field="Jaguar[0]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="16"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<widget field="Jaguar[1]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="62"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<widget field="AnalogInput[1]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
-			<location x="6" y="108"/>
-			<height>20</height>
-			<width>293</width>
-		</widget>
-		<widget field="Jaguar[3]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="128"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<widget field="Jaguar[2]" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="174"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<location x="428" y="23"/>
-		<width>305</width>
-		<height>227</height>
-	</widget>
-	<widget field="ScissorLifter" type="LW Subsystem" class="edu.wpi.first.smartdashboard.livewindow.elements.LWSubsystem">
-		<widget field="PIDSubsystem Controller" type="Table" class="edu.wpi.first.smartdashboard.gui.elements.PIDEditor">
-			<location x="6" y="16"/>
-			<height>136</height>
-			<width>293</width>
-		</widget>
-		<widget field="Motor" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SpeedController">
-			<location x="6" y="152"/>
-			<height>46</height>
-			<width>293</width>
-		</widget>
-		<widget field="Pot" type="Table" class="edu.wpi.first.smartdashboard.livewindow.elements.SingleNumberDisplay">
-			<location x="6" y="198"/>
-			<height>20</height>
-			<width>293</width>
-		</widget>
-		<location x="23" y="113"/>
-		<width>305</width>
-		<height>225</height>
-	</widget>
 </live-window>
 </xml>

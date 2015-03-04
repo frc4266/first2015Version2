@@ -7,35 +7,32 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ToteLifterToBottom extends Command {
-
-    public ToteLifterToBottom() {
+public class ToteLifterToSetpoint extends Command {
+	private double setpoint;
+    public ToteLifterToSetpoint(double setpoint) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
-    	requires(Robot.toteLifter);
+    	 this.setpoint = setpoint;
+         requires(Robot.toteLifter);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	Robot.toteLifter.enable();
+        Robot.toteLifter.setSetpoint(setpoint);
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.toteLifter.lower();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.toteLifter.isAtLowerLimit();
-      
+        return  Robot.toteLifter.onTarget();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.toteLifter.stop();
-      	Robot.isLoadingTote = false;
-      	Robot.isReadyToLoad = false;
     }
 
     // Called when another command which requires one or more of the same

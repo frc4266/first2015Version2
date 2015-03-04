@@ -98,23 +98,18 @@ public class DriveTrain extends Subsystem {
     public void arcadeDrive(Joystick right){
        // distance = getEncoderDistance();
        
-        forwardPower = powerLevel * right.getY();
-        turnPower= Math.abs(1*powerLevel)*right.getX(); //Turn power is 80% of powerLevel
+        forwardPower = powerLevel * right.getX();
+        turnPower= Math.abs(1*powerLevel)*right.getY(); //Turn power is 80% of powerLevel
         
         //this.right = rightEncoder.getDistance();
         //this.left = leftEncoder.getDistance();
  
-        drive.arcadeDrive(-forwardPower,-turnPower);
+        drive.arcadeDrive(forwardPower,turnPower);
     }
     public void autoDrive(double power){
-        
-        //distance = getEncoderDistance();
-        
-        //right = rightEncoder.getDistance();
-        //left = leftEncoder.getDistance();
-
-        //count++;
-        drive.drive(power,0);
+        turnPower = 0;
+    	drive.arcadeDrive(turnPower,-power);
+        //drive.drive(power,0);
         
        
     }

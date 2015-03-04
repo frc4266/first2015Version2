@@ -22,14 +22,15 @@ public class RobotMap {
     // jaguars
     public static final int rightMotor   = 0;//green
     public static final int leftMotor  = 1;//blue
-    public static final int toteLifter = 3;
-    public static final int canLifter = 4;
-    public static final int scissorLifter   = 5;
     public static final int conveyor   = 2;
+     //talons
+    public static final int toteLifter = 4;
+    public static final int canLifter = 3;
+    public static final int scissorLifter   = 5;   
     public static final int canClaw = 6;
     
     
-    //talons
+   
     
     //pot
     public static final int pot = 1;
@@ -48,8 +49,8 @@ public class RobotMap {
     public static final int canLifterUpperSwitch  = 8;
     
     //encoders
-    public static final int rightEncoder1 = 11;
-    public static final int rightEncoder2 = 12;
+    public static final int toteEncoder1 = 0;
+    public static final int toteEncoder2 = 1;
     public static final int leftEncoder1 = 13;
     public static final int leftEncoder2 = 14;
     

@@ -29,7 +29,7 @@ public class PrepareToLoad extends CommandGroup {
     	
     	
     	addSequential(new CanLifterToTop());
-    	addParallel(new ToteLifterToTop());
+    	
     	//addParallel(new ScissorLifterToLoad());
     	
     	Robot.isReadyToLoad = true;

@@ -13,7 +13,7 @@ public class AutoDriveToTime extends Command {
 	double power = 0;
 	double error = 0;
 	
-    public AutoDriveToTime(double time, double power) {
+    public AutoDriveToTime(double power,double time) {
     	requires(Robot.driveTrain);
     	this.power=power;
     	this.setTimeout(time);

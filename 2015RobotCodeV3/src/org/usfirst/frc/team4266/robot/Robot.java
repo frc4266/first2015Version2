@@ -3,8 +3,10 @@ package org.usfirst.frc.team4266.robot;
 
 
 
+import org.usfirst.frc.team4266.robot.commands.AutoCloseClaw;
 import org.usfirst.frc.team4266.robot.commands.AutoDoNothing;
 import org.usfirst.frc.team4266.robot.commands.AutoDriveToTime;
+import org.usfirst.frc.team4266.robot.commands.AutoLiftCanAndDrive;
 import org.usfirst.frc.team4266.robot.commands.PrepareToLoad;
 import org.usfirst.frc.team4266.robot.subsystems.CanClaw;
 import org.usfirst.frc.team4266.robot.subsystems.CanLifter;
@@ -135,11 +137,14 @@ public class Robot extends IterativeRobot {
 
     public void autonomousInit() {
     	
-    	double timeToDrive = prefs.getDouble("DriveTime", 2);
+    	double timeToDrive = prefs.getDouble("DriveTime", 9);
     	
 		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Drive to Auto Zone", new AutoDoNothing());
-		autoChooser.addObject("Drive to Time", new AutoDriveToTime(timeToDrive, 0.5));		
+		autoChooser.addDefault("Lift and Drive", new AutoLiftCanAndDrive(timeToDrive));
+		autoChooser.addObject("Auto Do Nothing", new AutoDoNothing());
+		
+		autoChooser.addObject("Drive to Time", new AutoDriveToTime(timeToDrive, 0.5));	
+		
 		SmartDashboard.putData("Auto Mode Chooser", autoChooser);
        
 		

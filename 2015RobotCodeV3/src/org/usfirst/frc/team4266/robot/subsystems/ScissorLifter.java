@@ -30,9 +30,9 @@ public class ScissorLifter extends PIDSubsystem{
 
 
 	
-	public static final double LOAD_SETPOINT = 1; //0.013
-	public static final double SCORING_SETPOINT = 2; //1.47
-	public static final double STEP_SETPOINT = 3;
+	public static final double LOAD_SETPOINT = 0.013;
+	public static final double SCORING_SETPOINT = 1.47;
+	public static final double STEP_SETPOINT = 1.18;
 	
 	//DigitalInput scoringSensor;
 	//DigitalInput stepSensor;

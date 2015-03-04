@@ -7,12 +7,15 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CanLifterToTop extends Command {
+public class AutoLiftClaw extends Command {
 
-    public CanLifterToTop() {
+	double time,power;
+    public AutoLiftClaw(double power, double time) {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	requires(Robot.canLifter);
+    	this.setTimeout(time);
+    	this.power=power;
     }
 
     // Called just before this Command runs the first time
@@ -21,18 +24,17 @@ public class CanLifterToTop extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.canLifter.raise(1);
+    	Robot.canLifter.raise(power);
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return Robot.canLifter.isAtUpperLimit();
+        return this.isTimedOut();
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	Robot.canLifter.stop();
-    	
     }
 
     // Called when another command which requires one or more of the same

@@ -1,7 +1,12 @@
 package org.usfirst.frc.team4266.robot;
 
 import org.usfirst.frc.team4266.robot.commands.LoadNextTote;
+import org.usfirst.frc.team4266.robot.commands.ToteLifterToSetpoint;
 import org.usfirst.frc.team4266.robot.commands.UnloadTotes;
+import org.usfirst.frc.team4266.robot.commands.UserCanLiftOff;
+import org.usfirst.frc.team4266.robot.commands.UserCanLiftOn;
+import org.usfirst.frc.team4266.robot.commands.UserClawOff;
+import org.usfirst.frc.team4266.robot.commands.UserClawMover;
 import org.usfirst.frc.team4266.robot.commands.UserScissorLiftOff;
 import org.usfirst.frc.team4266.robot.commands.UserScissorLiftOn;
 import org.usfirst.frc.team4266.robot.commands.UserToteLifterOff;
@@ -9,6 +14,7 @@ import org.usfirst.frc.team4266.robot.commands.UserToteLifterOn;
 import org.usfirst.frc.team4266.robot.commands.UserTurnOffConveyor;
 import org.usfirst.frc.team4266.robot.commands.UserTurnOnConveyor;
 import org.usfirst.frc.team4266.robot.subsystems.ScissorLifter;
+import org.usfirst.frc.team4266.robot.subsystems.ToteLifter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
@@ -46,43 +52,57 @@ public class OI {
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
     public static final Joystick driveStick = new Joystick(RobotMap.driveStick);
-    //public static final Joystick liftStick = new Joystick(RobotMap.joystick2);
+    public static final Joystick liftStick = new Joystick(RobotMap.joystick2);
     
     
-   // public static Button loadToteButton = new JoystickButton(driveStick,2);
-    
-    //public static Button unLoadToStep = new JoystickButton(driveStick,3);
-    
-   // public static Button unLoadToScoring = new JoystickButton(driveStick,1);
-    
-    //public static Button stopLoading = new JoystickButton(driveStick,11);
-    
+  
     
     public OI (){
     	
-    	new JoystickButton(driveStick, 2).whenPressed(new LoadNextTote());
+    //DRIVER JOYSTICK INTERACTIONS
     	
+    	//Driver Button 6 turns conveyor IN
     	new JoystickButton(driveStick, 6).whenPressed(new UserTurnOnConveyor(1));//conveyor to load
     	new JoystickButton(driveStick, 6).whenReleased(new UserTurnOffConveyor());
     	
+    	//DriverButton 7 turns conveyor out
     	new JoystickButton(driveStick, 7).whenPressed(new UserTurnOnConveyor(-1));//conveyor to unload
     	new JoystickButton(driveStick, 7).whenReleased(new UserTurnOffConveyor());
     	
+    	//Driver Button 8 Lowers the Scissor Lifter
     	new JoystickButton(driveStick, 8).whenPressed(new UserScissorLiftOn(-0.7));//scissor lift down
     	new JoystickButton(driveStick, 8).whenReleased(new UserScissorLiftOff());
     	
+    	//Driver Button 9 Raises the Scissor Lifter
     	new JoystickButton(driveStick, 9).whenPressed(new UserScissorLiftOn(0.7));//scissor lift up
     	new JoystickButton(driveStick, 9).whenReleased(new UserScissorLiftOff());
     	
-    	new JoystickButton(driveStick, 11).whenPressed(new UserToteLifterOn(0.3));//tote lifter up
-    	new JoystickButton(driveStick, 11).whenReleased(new UserToteLifterOff());
+	//TOTE LIFTER JOYSTICK INTERACTIONS
     	
-    	new JoystickButton(driveStick, 10).whenPressed(new UserToteLifterOn(-0.3));//tote lifter down
-    	new JoystickButton(driveStick, 10).whenReleased(new UserToteLifterOff());
+    	//ToteLifter Button 6 Raises the CanLifter
+    	new JoystickButton(liftStick, 6).whenPressed(new UserCanLiftOn(0.7));//tote lifter up
+    	new JoystickButton(liftStick, 6).whenReleased(new UserCanLiftOff());
+    	
+    	//ToteLifter Button 7 Lowers the CanLifter
+    	new JoystickButton(liftStick, 7).whenPressed(new UserCanLiftOn(-0.2));//tote lifter down
+    	new JoystickButton(liftStick, 7).whenReleased(new UserCanLiftOff());
     	
     	
-    	//new JoystickButton(driveStick, 3).whenPressed(new UnloadTotes(ScissorLifter.STEP_SETPOINT));
-    	//new JoystickButton(driveStick, 1).whenPressed(new UnloadTotes(ScissorLifter.SCORING_SETPOINT));
+    	//ToteLifter Button 8 Rotates Claw One Direction
+    	new JoystickButton(liftStick, 8).whenPressed(new UserClawMover(0.3));//positive power one way
+    	new JoystickButton(liftStick, 8).whenReleased(new UserClawOff());
+    	
+    	//ToteLifter Button 8 Rotates Claw The Other Direction
+    	new JoystickButton(liftStick, 9).whenPressed(new UserClawMover(-0.3));//negative power the otherp
+    	new JoystickButton(liftStick, 9).whenReleased(new UserClawOff());
+    	
+
+    	new JoystickButton(liftStick, 11).whenPressed(new UserToteLifterOn(0.3));//tote lifter up
+    	new JoystickButton(liftStick, 11).whenReleased(new UserToteLifterOff());
+    	
+    	new JoystickButton(liftStick, 10).whenPressed(new UserToteLifterOn(-0.3));//tote lifter down
+    	new JoystickButton(liftStick, 10).whenReleased(new UserToteLifterOff());
+
     }
     
     /*
